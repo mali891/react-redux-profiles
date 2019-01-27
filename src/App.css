@@ -1,32 +1,23 @@
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css';
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  /* height: 100vh;
+  width: 100vw; */
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding-top: 5rem;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  /* background-color: #013243; */
+  /* position: fixed; */
 }
 
-.App-link {
-  color: #61dafb;
+.collection {
+  /* overflow-y: auto; */
+  /* height: calc(100vh - 5rem); */
+  border: none!important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.collection-header {
+  border-bottom: none!important;
+  padding-left: 0!important;
 }

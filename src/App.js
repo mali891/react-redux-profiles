@@ -1,28 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { connect } from 'react-redux';
+import Main from './Components/Main';
+import { fetchProfiles } from './actions/postActions';
 import './App.css';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.fetchProfiles();
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div className="container">
+          <div className="row">
+            <div className="col s10 offset-s1">
+              <ul className="collection collection with-header">
+                <li className="collection-header"><h4>User profiles</h4></li>
+                <div className="row">
+                
+                <Main {...this.props} />
+
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = ({ profiles }) => ({ profiles })
+
+const mapDispatchToProps = (fetchProfiles) => ({ fetchProfiles })
+
+export default connect(
+  mapStateToProps, 
+  mapDispatchToProps(fetchProfiles)
+)(App);
