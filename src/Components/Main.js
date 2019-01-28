@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatName } from '../functions/formatters';
 
 class Main extends React.Component {
   render() {
@@ -17,7 +18,7 @@ class Main extends React.Component {
               <p>{profile.phone}</p>
             </div>
             <div className="card-action">
-              <a href="#!">View {profile.name.split(' ')[0]}'s profile</a>
+              <a href="#!">View {formatName(profile.name)} profile</a>
             </div>
           </div>
         </div>
