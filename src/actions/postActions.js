@@ -7,6 +7,6 @@ export const fetchProfiles = () => dispatch => {
     type: FETCH_PROFILES,
     payload: profiles
   }))
-  .then(profiles => console.log(profiles))
+  // .then(profiles => console.log(profiles))
   .catch(err => console.error(err))
 }

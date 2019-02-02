@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Main from './Components/Main';
+import Main from './scenes/Main';
+import SingleProfile from './scenes/SingleProfile';
 import { fetchProfiles } from './actions/postActions';
 import './App.css';
 
@@ -15,14 +17,14 @@ class App extends Component {
         <div className="container">
           <div className="row">
             <div className="col s10 offset-s1">
-              <ul className="collection collection with-header">
-                <li className="collection-header"><h4>User profiles</h4></li>
-                <div className="row">
                 
-                <Main {...this.props} />
+              <BrowserRouter>
+                <React.Fragment>
+                  <Route exact path="/" render={() => <Main {...this.props} />} />
+                  <Route path="/profile/:username/:index" render={() => <SingleProfile {...this.props} />} />
+                </React.Fragment>
+              </BrowserRouter>
 
-                </div>
-              </ul>
             </div>
           </div>
         </div>

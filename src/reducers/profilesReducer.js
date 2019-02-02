@@ -1,7 +1,7 @@
 import { FETCH_PROFILES } from '../actions/types';
 
 const profilesReducer = (state = [], {type, payload}) => {
-  switch(type) {
+  switch (type) {
     case FETCH_PROFILES:
       return [
         ...state,
