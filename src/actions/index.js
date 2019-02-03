@@ -1,1 +1,1 @@
-import { fetchPosts } from './postActions';
+import { fetchProfiles } from './profileActions';

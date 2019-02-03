@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Main from './scenes/Main';
 import SingleProfile from './scenes/SingleProfile';
-import { fetchProfiles } from './actions/postActions';
+import * as profileActions from './actions/profileActions';
 import './App.css';
 
 class App extends Component {
@@ -35,9 +36,9 @@ class App extends Component {
 
 const mapStateToProps = ({ profiles }) => ({ profiles })
 
-const mapDispatchToProps = (fetchProfiles) => ({ fetchProfiles })
+const mapDispatchToProps = (dispatch) => bindActionCreators(profileActions, dispatch)
 
 export default connect(
   mapStateToProps, 
-  mapDispatchToProps(fetchProfiles)
+  mapDispatchToProps
 )(App);

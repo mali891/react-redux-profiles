@@ -1,6 +1,17 @@
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @import 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css';
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* html {
+  scroll-behavior: smooth;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+} */
+
 .App {
   /* height: 100vh;
   width: 100vw; */
@@ -9,6 +20,10 @@
   justify-content: center;
   /* background-color: #013243; */
   /* position: fixed; */
+}
+
+h3 {
+  margin: 3rem 0 4rem;
 }
 
 .collection {
@@ -20,4 +35,39 @@
 .collection-header {
   border-bottom: none!important;
   padding-left: 0!important;
+}
+
+.header-single {
+  height: 500px;
+  width: 100%;
+  background-position: center center;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+.collection .collection-item.avatar:not(.circle-clipper)>.circle, .collection .collection-item.avatar :not(.circle-clipper)>.circle {
+  left: 0;
+}
+
+.collection .collection-item.avatar {
+  padding: 2rem 2rem 2rem 60px;
+  min-height: unset;
+}
+
+.collection .collection-item.avatar .title {
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+
+.collection .collection-item.avatar .secondary-content {
+  top: 2rem;
+}
+
+.profileEntry__fab {
+  right: 0;
+  top: 2rem;
+}
+
+.capitalise {
+  text-transform: capitalize;
 }

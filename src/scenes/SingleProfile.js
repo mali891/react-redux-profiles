@@ -1,39 +1,59 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import ProfileEntry from '../components/ProfileEntry';
 
 class SingleProfile extends React.Component {
-  renderProfile = (profiles, index) => {
+  headerRef = React.createRef();
+
+  componentDidMount() {
+    this.headerRef.current.scrollIntoView({
+      block: 'center',
+      inline: 'center',
+    });
+  }
+
+  renderProfile = (profiles, postId) => {
     if (profiles.length) {
       return (
-        Object.entries(this.props.profiles[index]).map(profile => (
-          <li key={profile.id}>{`${profile[0]} - ${profile[1]}`}</li>
-        ))
+        <ul className="collection">
+          {Object.entries(profiles[postId]).map((profile, index) => 
+            <ProfileEntry 
+              key={index} 
+              index={index} 
+              profile={profile} 
+              postId={postId} 
+              hasObj={typeof profile[1] === 'object'} 
+              updateProfile={this.props.updateProfile} 
+            />
+          )}
+        </ul>
       )
     }
 
     return <p>Loading...</p>;
   }
 
+
   render() {
     const { location, profiles } = this.props;
-    const [ username, index ] = [ 
-      location.pathname.split('/')[2], 
-      location.pathname.split('/')[3] 
-    ]
+    const [ postId ] = [ location.pathname.split('/')[3] ]
 
     return (
-      <ul className="collection collection with-header">
-        <li className="collection-header">
-          <h4>{profiles.length && profiles[index].name}</h4>
-        </li>
+      <React.Fragment>
+        <header ref={this.headerRef} className="header-single" style={{background: `url(https://unsplash.it/1000/60${postId})`}}></header>
         <div className="row">
-          <div className="col s12 m6">
+          <div className="col s12 m10 offset-m1">
+            <h3>{profiles.length && profiles[postId].name}</h3>
             <ul>
-              {this.renderProfile(profiles, index)}
+              {this.renderProfile(profiles, postId)}
             </ul>
+            <span className="waves-effect waves-light btn-large red lighten-1">
+              <i className="material-icons right">delete_forever</i>
+              Delete account
+            </span>
           </div>
         </div>
-      </ul>
+      </React.Fragment>
     )
   }
 }
