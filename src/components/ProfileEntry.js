@@ -16,8 +16,13 @@ class ProfileEntry extends React.Component {
 
   updateField = (fieldName) => {
     const { updateProfile, postId } = this.props;
+    const { editing, fieldVal } = this.state;
 
-    updateProfile(postId, fieldName, this.state.fieldVal);
+    if (editing) {
+      updateProfile(postId, fieldName, fieldVal);
+    }
+
+    return null;
   }
 
   handleChange = (fieldVal) => this.setState({ fieldVal })
@@ -58,6 +63,7 @@ class ProfileEntry extends React.Component {
                     ref={this.inputRef} 
                     type="text" 
                     value={this.state.fieldVal} 
+                    autoFocus
                   />
                 </div>
               )
@@ -70,6 +76,7 @@ class ProfileEntry extends React.Component {
                   ref={this.inputRef} 
                   type="text" 
                   value={this.state.fieldVal}
+                  autoFocus
                 />}
           </React.Fragment>
         )}

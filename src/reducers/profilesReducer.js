@@ -1,4 +1,4 @@
-import { FETCH_PROFILES, UPDATE_PROFILE } from '../actions/types';
+import { FETCH_PROFILES, UPDATE_PROFILE, DELETE_PROFILE } from '../actions/types';
 
 const profilesReducer = (state = [], {type, payload}) => {
   switch (type) {
@@ -9,16 +9,17 @@ const profilesReducer = (state = [], {type, payload}) => {
       ]
     
     case UPDATE_PROFILE:
-    const { field, postId, value } = payload;
-    const stateCopy = {...state[postId]}
+      const { field, postId, value } = payload;
+      const stateCopy = [...state];
+      const profileCopy = {...state[postId]};
 
-    stateCopy[field] = value;
+      profileCopy[field] = value;
 
       return [
-        ...state.slice(0, postId),
-        {...stateCopy},
-        ...state.slice(postId + 1)
-       ]
+        ...stateCopy.slice(0, parseInt(postId)),
+        {...profileCopy},
+        ...stateCopy.slice((parseInt(postId) + 1), (stateCopy.length + 1))
+      ]
 
     default:
       return state;

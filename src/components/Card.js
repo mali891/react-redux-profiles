@@ -17,7 +17,7 @@ const Card = ({ profile, i }) => {
           </Link>
         </div>
 
-        <div className="card-content white-text"> 
+        <div className="card-content white-text">
           <p><strong>{username}</strong></p>
           <p>{email}</p>
           <p>{phone}</p>
