@@ -22,7 +22,7 @@ class App extends Component {
               <BrowserRouter>
                 <React.Fragment>
                   <Route exact path="/" render={() => <Main {...this.props} />} />
-                  <Route path="/profile/:username/:index" render={() => <SingleProfile {...this.props} />} />
+                  <Route path="/profile/:username/:profileId" render={() => <SingleProfile {...this.props} />} />
                 </React.Fragment>
               </BrowserRouter>
 

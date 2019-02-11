@@ -10,18 +10,18 @@ export const fetchProfiles = () => dispatch => {
   .catch(err => console.error(err))
 } 
 
-export const updateProfile = (postId, field, value) => ({
+export const updateProfile = (profileId, field, value) => ({
   type: UPDATE_PROFILE,
   payload: {
-    postId,
+    profileId,
     field,
     value
   }
 })
 
-export const deleteProfile = (postId) => ({
+export const deleteProfile = (profileId) => ({
   type: DELETE_PROFILE,
   payload: {
-    postId,
+    profileId,
   }
 })

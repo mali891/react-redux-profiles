@@ -15,11 +15,11 @@ class ProfileEntry extends React.Component {
   toggleEditing = () => this.setState({ editing: !this.state.editing })
 
   updateField = (fieldName) => {
-    const { updateProfile, postId } = this.props;
+    const { updateProfile, profileId } = this.props;
     const { editing, fieldVal } = this.state;
 
     if (editing) {
-      updateProfile(postId, fieldName, fieldVal);
+      updateProfile(profileId, fieldName, fieldVal);
     }
 
     return null;
@@ -60,6 +60,12 @@ class ProfileEntry extends React.Component {
                   <p><strong className="capitalise">{item[0]}</strong>:</p> 
                   <input 
                     onChange={(e) => this.handleChange(e.target.value)}
+                    onKeyUp={(e) => {
+                      if (e.keyCode === 13)  {
+                        this.updateField(profile[0]);
+                        this.toggleEditing();
+                      };
+                    }}
                     ref={this.inputRef} 
                     type="text" 
                     value={this.state.fieldVal} 
@@ -72,6 +78,12 @@ class ProfileEntry extends React.Component {
             return null;
           }) : <input 
                   onChange={(e) => this.handleChange(e.target.value)} 
+                  onKeyUp={(e) => {
+                      if (e.keyCode === 13)  {
+                        this.updateField(profile[0]);
+                        this.toggleEditing();
+                      };
+                    }}
                   key={`profile-entry-${index}`} 
                   ref={this.inputRef} 
                   type="text" 

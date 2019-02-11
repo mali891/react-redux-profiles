@@ -71,3 +71,47 @@ h3 {
 .capitalise {
   text-transform: capitalize;
 }
+
+.modal--overlay {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,.8);
+  z-index: 99;
+}
+
+.modal {
+  display: block;
+  height: auto;
+  width: auto;
+  position: relative;
+  padding: 3rem;
+}
+
+.modal .modal-content {
+  padding: 0;
+  margin-bottom: 5rem;
+}
+
+.modal .btn-large {
+  margin-left: 1rem!important;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 250ms forwards ease 0ms;
+}
