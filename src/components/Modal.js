@@ -2,7 +2,7 @@ import React from 'react';
 import { formatName } from '../functions/formatters';
 
 const Modal = ({ name, toggleModal, deleteProfile }) => (
-  <div className="modal--overlay fade-in">
+  <div className="modal--overlay fade-in" onClick={toggleModal}>
     <div className="modal">
       <div className="modal-content">
         <h4>Are you sure you want to delete {formatName(name)}'s account?</h4>

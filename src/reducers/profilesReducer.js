@@ -1,7 +1,6 @@
 import { FETCH_PROFILES, UPDATE_PROFILE, DELETE_PROFILE } from '../actions/types';
 
 const deleteProfile = (state, payload) => {
-  console.log(payload)
   const { profileId } = payload;
   const stateCopy = [...state];
 

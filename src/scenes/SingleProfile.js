@@ -2,19 +2,17 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import ProfileEntry from '../components/ProfileEntry';
 import Modal from '../components/Modal';
+import scrollToTop from '../functions/scrollToTop';
 
 class SingleProfile extends React.Component {
-  headerRef = React.createRef();
-
   state = {
     modalOpen: false
   }
+  
+  headerRef = React.createRef();
 
   componentDidMount() {
-    this.headerRef.current.scrollIntoView({
-      block: 'center',
-      inline: 'center',
-    });
+    scrollToTop(this.headerRef.current);
   }
 
   renderProfile = (profiles, profileId) => {
@@ -41,6 +39,7 @@ class SingleProfile extends React.Component {
   toggleModal = () => this.setState({ modalOpen: !this.state.modalOpen })
 
   deleteProfile = (profileId) => {
+    scrollToTop(this.headerRef.current);
     this.props.history.push('/');
     this.props.deleteProfile(parseInt(profileId))
   }
